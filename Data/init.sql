@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS videojuegos (
+id INTEGER PRIMARY KEY,
+titulo TEXT NOT NULL,
+plataforma TEXT NOT NULL,
+genero TEXT NOT NULL,
+precio REAL NOT NULL,
+estado TEXT NOT NULL
+);

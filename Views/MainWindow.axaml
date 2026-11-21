@@ -1,0 +1,52 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="VideojuegosApp.Views.MainWindow"
+        Title="Inventario de Videojuegos"
+        Width="920" Height="560" MinWidth="820" MinHeight="500"
+        WindowStartupLocation="CenterScreen">
+  <Grid ColumnDefinitions="300,*" Margin="16">
+    <StackPanel Grid.Column="0" Spacing="6" Margin="0,0,16,0">
+      <TextBlock Text="Datos del videojuego" FontSize="18" FontWeight="SemiBold" />
+      <TextBlock Text="Título" />
+      <TextBox x:Name="TxtTitulo" />
+      <TextBlock Text="Plataforma" />
+      <TextBox x:Name="TxtPlataforma" />
+      <TextBlock Text="Género" />
+      <TextBox x:Name="TxtGenero" />
+      <TextBlock Text="Precio (COP)" />
+      <TextBox x:Name="TxtPrecio" />
+      <TextBlock Text="Estado" />
+      <ComboBox x:Name="CmbEstado" HorizontalAlignment="Stretch" />
+      <WrapPanel Margin="0,8,0,0">
+        <Button Content="Guardar" Click="BtnGuardar_Click" Margin="0,0,6,6" />
+        <Button Content="Actualizar" Click="BtnActualizar_Click" Margin="0,0,6,6" />
+        <Button Content="Eliminar" Click="BtnEliminar_Click" Margin="0,0,6,6" />
+        <Button Content="Limpiar" Click="BtnLimpiar_Click" Margin="0,0,6,6" />
+      </WrapPanel>
+      <TextBlock x:Name="TxtMensaje" TextWrapping="Wrap" FontWeight="SemiBold" />
+    </StackPanel>
+
+    <Grid Grid.Column="1" RowDefinitions="Auto,*">
+      <Grid Grid.Row="0" ColumnDefinitions="2*,*,*,*,*" Margin="12,0,12,6">
+        <TextBlock Grid.Column="0" Text="Título" FontWeight="SemiBold" />
+        <TextBlock Grid.Column="1" Text="Plataforma" FontWeight="SemiBold" />
+        <TextBlock Grid.Column="2" Text="Género" FontWeight="SemiBold" />
+        <TextBlock Grid.Column="3" Text="Precio" FontWeight="SemiBold" />
+        <TextBlock Grid.Column="4" Text="Estado" FontWeight="SemiBold" />
+      </Grid>
+      <ListBox Grid.Row="1" x:Name="LstVideojuegos" SelectionChanged="Lista_SelectionChanged">
+        <ListBox.ItemTemplate>
+          <DataTemplate>
+            <Grid ColumnDefinitions="2*,*,*,*,*">
+              <TextBlock Grid.Column="0" Text="{Binding Titulo}" />
+              <TextBlock Grid.Column="1" Text="{Binding Plataforma}" />
+              <TextBlock Grid.Column="2" Text="{Binding Genero}" />
+              <TextBlock Grid.Column="3" Text="{Binding Precio, StringFormat='{}{0:C0}'}" />
+              <TextBlock Grid.Column="4" Text="{Binding Estado}" />
+            </Grid>
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+      </ListBox>
+    </Grid>
+  </Grid>
+</Window>
